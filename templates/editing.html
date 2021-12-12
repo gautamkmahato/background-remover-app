@@ -1,0 +1,159 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+      <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="{{ url_for('static', filename='css/style2.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../static/css/style3.css">   
+</head>
+   <body>
+
+    <h1>Image Editor with CSS Filters and jQuery</h1>
+		
+    <!--Form for collecting image URL -->
+    <form id="urlBox" class="center">
+      <input class="url-box" type="url" id="imgUrl" placeholder="Paste any image link and start playing!">
+      <input id="go" type="button" value="Go">
+    </form>
+    
+    <hr color="grey">
+    
+    <!--Controls for CSS filters via range input-->
+    <div class="sliders">
+      <form id="imageEditor">
+        <p>
+          <label for="gs">Grayscale</label>
+          <input id="gs" name="gs" type="range" min="0" max="100" value="0">
+        </p>
+    
+        <p>
+          <label for="blur">Blur</label>
+          <input id="blur" name="blur" type="range" min="0" max="10" value="0">
+        </p>
+    
+        <p>
+          <label for="br">Exposure</label>
+          <input id="br" name="br" type="range" min="0" max="200" value="100">
+        </p>
+    
+        <p>
+          <label for="ct">Contrast</label>
+          <input id="ct" name="ct" type="range" min="0" max="200" value="100">
+        </p>
+    
+        <p>
+          <label for="huer">Hue Rotate</label>
+          <input id="huer" name="huer" type="range" min="0" max="360" value="0">
+        </p>
+    
+        <p>
+          <label for="opacity">Opacity</label>
+          <input id="opacity" name="opacity" type="range" min="0" max="100" value="100">
+        </p>
+    
+        <p>
+          <label for="invert">Invert</label>
+          <input id="invert" name="invert" type="range" min="0" max="100" value="0">
+        </p>
+    
+        <p>
+          <label for="saturate">Saturate</label>
+          <input id="saturate" name="saturate" type="range" min="0" max="500" value="100">
+        </p>
+    
+        <p>
+          <label for="sepia">Sepia</label>
+          <input id="sepia" name="sepia" type="range" min="0" max="100" value="0">
+        </p>
+    
+        <input type="reset" form="imageEditor" id="reset" value="Reset" />
+    
+      </form>
+    </div>	
+    
+    <!--container where image will be loaded-->
+    <div id="imageContainer" class="center">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/123941/stadium.jpg">
+    </div>
+    
+    <p class="p">Demo by Vikas Lalwani. <a href="http://www.sitepoint.com/build-simple-image-editor-with-css-filters-jquery" target="_blank">See article</a>.</p>
+    
+    
+    <script>
+        //on click of go(submit) button, addImage() will be called
+    $("#go").click(addImage);
+    
+    //on pressing return, addImage() will be called
+    $("#urlBox").submit(addImage);
+    
+    
+    // editing image via css properties
+    function editImage() {
+        var gs = $("#gs").val(); // grayscale
+        var blur = $("#blur").val(); // blur
+        var br = $("#br").val(); // brightness
+        var ct = $("#ct").val(); // contrast
+        var huer = $("#huer").val(); //hue-rotate
+        var opacity = $("#opacity").val(); //opacity
+        var invert = $("#invert").val(); //invert
+        var saturate = $("#saturate").val(); //saturate
+        var sepia = $("#sepia").val(); //sepia
+    
+        $("#imageContainer img").css(
+        "filter", 'grayscale(' + gs+
+        '%) blur(' + blur +
+        'px) brightness(' + br +
+        '%) contrast(' + ct +
+        '%) hue-rotate(' + huer +
+        'deg) opacity(' + opacity +
+        '%) invert(' + invert +
+        '%) saturate(' + saturate +
+        '%) sepia(' + sepia + '%)'
+      );
+    
+        $("#imageContainer img").css(
+        "-webkit-filter", 'grayscale(' + gs+
+        '%) blur(' + blur +
+        'px) brightness(' + br +
+        '%) contrast(' + ct +
+        '%) hue-rotate(' + huer +
+        'deg) opacity(' + opacity +
+        '%) invert(' + invert +
+        '%) saturate(' + saturate +
+        '%) sepia(' + sepia + '%)'
+      );
+    }
+    
+    //When sliders change image will be updated via editImage() function
+    $("input[type=range]").change(editImage).mousemove(editImage);
+    
+    // Reset sliders back to their original values on press of 'reset'
+    $('#imageEditor').on('reset', function () {
+        setTimeout(function() {
+            editImage();
+        }, 0);
+    });
+    
+    // adding an image via url box
+    function addImage(e) {
+        var imgUrl = $("#imgUrl").val();
+        if (imgUrl.length) {
+            $("#imageContainer img").attr("src", imgUrl);
+        }
+        e.preventDefault();	
+    }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      
+   </body>
+</html>

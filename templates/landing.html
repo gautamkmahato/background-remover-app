@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing Page With Light/Dark Mode</title>
+    <link rel="stylesheet" href="../static/css/home_landing.css" />
+
+    <style>
+ article {
+	 --c: #ffa940;
+	 --s0: calc(1.25em + 6px);
+	 --s1: calc(1.25em + 6px + 0.5em);
+	 place-self: center;
+	 position: relative;
+	 width: 14em;
+	 height: 14em;
+	 border: solid 0 transparent;
+	 border-width: 0 var(--s0) var(--s0) 0;
+	 padding: var(--s1) 0.5em 0.5em var(--s1);
+	 background: var(--c) padding-box;
+}
+ article:nth-child(2) {
+	 --c: #b4ff7d;
+	 filter: invert(1);
+}
+ article::before {
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 border: inherit;
+	 border-width: 1.25em 0 0 1.25em;
+	 width: 34.5em;
+	 height: 20em;
+	 box-shadow: inset 0 0 0 6px var(--c);
+	 mix-blend-mode: difference;
+	 pointer-events: none;
+	 content: '';
+} 
+
+.gif-image{
+    width: 500px;
+}
+@media screen and (max-width: 480px) {
+    .gif-image{
+    width: 290px;
+    }
+    article::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        border: inherit;
+        border-width: 1.25em 0 0 1.25em;
+        width: 21em;
+        height: 13.2em;
+        box-shadow: inset 0 0 0 6px var(--c);
+        mix-blend-mode: difference;
+        pointer-events: none;
+        content: '';
+    } 
+}
+    </style>
+
+  </head>
+  <body>
+    <main>
+      <div class="big-wrapper light">
+        <img src="./img/shape.png" alt="" class="shape" />
+
+        <header>
+          <div class="container">
+            <div class="logo">
+              <img src="../static/icons8.png" alt="Logo" style="width: 40px; height: 40px;" />
+              <h3>NoEdit</h3>
+            </div>
+
+            <div class="links">
+              <ul>
+                <li><a href="/bgremove">Background remove</a></li>
+                <li><a href="/editing">Editing</a></li>
+                <li><a href="/about">How it works</a></li>
+                <li><a href="/bgremove" class="btn">Background Remove</a></li>
+              </ul>
+            </div>
+
+            <div class="overlay"></div>
+
+            <div class="hamburger-menu">
+              <div class="bar"></div>
+            </div>
+          </div>
+        </header>
+
+        <div class="showcase-area">
+          <div class="container">
+            <div class="left">
+              <div class="big-title">
+                <h4>Future is here, Start Exploring now.</h4>
+                <h1>Background Remover</h1>
+              </div>
+              <p class="text">
+                An AI based automatic Background Remover website <br>
+                Its 100% free, Try it now.
+              </p>
+              <div class="cta">
+                <a href="/bgremove" class="btn">Get started</a>
+              </div>
+            </div>
+
+            <div class="right">
+              <!-- <img src="../static/ECgif.gif" alt="Person Image" class="person" /> -->
+              <article>
+                <img src="../static/ECgif.gif" alt="" class="gif-image">
+              </article>
+              
+            </div>
+          </div>
+        </div>
+
+        <div class="bottom-area">
+          <div class="container">
+            <button class="toggle-btn">
+              <i class="far fa-moon"></i>
+              <i class="far fa-sun"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- JavaScript Files -->
+
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <script src="../static/js/app.js"></script>
+  </body>
+</html>

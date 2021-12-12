@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+
+    <style>
+ /* *, ::before {
+	 box-sizing: inherit;
+	 margin: 0;
+}
+ html {
+	 font: 100 1.25em/ 1.25 handlee, z003, segoe script, comic sans ms, cursive;
+}
+ @media (max-width: 360px) {
+	 html {
+		 font-size: 1em;
+	}
+}
+ @media (max-width: 240px) {
+	 html {
+		 font-size: 0.75em;
+	}
+}
+ body {
+	 box-sizing: border-box;
+	 display: grid;
+	 grid-gap: 1.25em;
+	 grid-template-columns: repeat(auto-fit, minmax(14em, 1fr));
+	 overflow-x: hidden;
+	 padding: 0.5em;
+	 min-height: 100vh;
+	 background: linear-gradient(var(--ang, 185deg), #000 calc(50% - .5px), #fff calc(50% + .5px));
+}
+ @media (min-width: 37.8125em) {
+	 body {
+		 --ang: 85deg;
+	}
+} */
+ article {
+	 --c: #ffa940;
+	 --s0: calc(1.25em + 6px);
+	 --s1: calc(1.25em + 6px + 0.5em);
+	 place-self: center;
+	 position: relative;
+	 width: 14em;
+	 height: 14em;
+	 border: solid 0 transparent;
+	 border-width: 0 var(--s0) var(--s0) 0;
+	 padding: var(--s1) 0.5em 0.5em var(--s1);
+	 background: var(--c) padding-box;
+}
+ article:nth-child(2) {
+	 --c: #b4ff7d;
+	 filter: invert(1);
+}
+ article::before {
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 border: inherit;
+	 border-width: 1.25em 0 0 1.25em;
+	 width: 34.5em;
+	 height: 20em;
+	 box-shadow: inset 0 0 0 6px var(--c);
+	 mix-blend-mode: difference;
+	 pointer-events: none;
+	 content: '';
+}
+
+ 
+    </style>
+  </head>
+  <body>
+    
+    <article>
+      <img src="../static/ECgif.gif" alt="">
+    </article>
+  
+  </body>
+</html>

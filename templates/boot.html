@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="{{ url_for('static', filename='css/style2.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+
+    <div class="container">
+
+      <div class="container">
+        <div class="row" style="padding: 40px;">
+          <div class="col-sm" style="border: 1px solid rgb(209, 209, 209); padding: 10px;">
+            <h6 class="text-center">Original Image</h6>
+            <!-- <img src="../static/IMG.JPG" class="img-fluid img-rounded" alt="Responsive image"> -->
+            <a href="/static/uploads/{{ fname }}" target="_new"><img src="/static/uploads/{{ fname }}" class="img-fluid img-rounded" alt="Responsive image"></a>
+          </div>
+          <div class="col-sm" style="border: 1px solid rgb(209, 209, 209); padding: 10px;">
+            <h6 class="text-center">Image Without Background</h6>
+            <!-- <img src="../static/IMG.JPG" class="img-fluid" alt="Responsive image"> -->
+            <a href="/static/uploads/detected.jpg" target="_new"><img src="/static/uploads/detected.png" class="img-fluid" alt="Responsive image"></a>
+
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-sm">
+          <div class="alert alert-dark" role="alert">
+            <h6 class="text-center">Upload another Fileeeeeeeeeeeeeeeeee</h6>            
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="container">
+      <div class="input-group" style="width: 30%;">
+        <div class="custom-file">
+          <form action = "/uploader" method = "POST" enctype = "multipart/form-data">
+            <input type="file" name="file" class="custom-file-input form-control-file" id="customFileInput" aria-describedby="customFileInput">
+          <label class="custom-file-label" for="customFileInput">Select file</label>
+          hgfh
+          <input type="submit" name="submit" id="">
+        </form>
+          <h1>hello world</h1>
+        </div>
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="button" id="customFileInput">Upload</button>
+          
+        </div>
+      </div>
+    </div>
+  <h1>hrllo</h1>
+    <script>
+      document.querySelector('.custom-file-input').addEventListener('change', function (e) {
+        var name = document.getElementById("customFileInput").files[0].name;
+        var nextSibling = e.target.nextElementSibling
+        nextSibling.innerText = name
+      })
+    </script>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
